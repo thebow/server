@@ -10,16 +10,16 @@ var db = require("../database-mysql");
 // UNCOMMENT LINES BELLOW////
 
 
-// UNCOMMENT IF USING MYSQL WITH CALLBACKS
+
 // var selectAll = function (req, res) {
-//   db.query("SELECT * FROM items", (err, items, fields) => {
-//     if (err) {
-//       res.status(500).send(err);
-//     } else {
-//       res.status(200).send(items);
-//     }
-//   });
-// };
+//     db.query("SELECT * FROM events", (err, result) => {
+//       if (err) {
+//         res.status(500).send(err);
+//       } else {
+//         res.status(200).send(result);
+//       }
+//     });
+//   };
 
 
 ///////////////////////////////////////////////////////////////////
@@ -38,4 +38,4 @@ var db = require("../database-mysql");
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-module.exports = { selectAll };
+// module.exports = { selectAll };
