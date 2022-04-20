@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS mvp;
+DROP DATABASE IF EXISTS eventogo;
 
-CREATE DATABASE mvp;
+CREATE DATABASE eventogo;
 
-USE mvp;
+USE eventogo;
 
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
@@ -23,6 +23,8 @@ CREATE TABLE events (
   selected boolean NOT NULL,
   PRIMARY KEY (id)
 );
+
+
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root -p < server/database-mysql/schema.sql
