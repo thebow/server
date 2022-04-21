@@ -1,6 +1,10 @@
 const router = require('express').Router();
-const adminController = require("../controllers/admin.controller");
+const { addEvent, modifEvent, deleteEvent } = require('../controllers/admin.controller.js');
 
-router.get("/admin", adminController.selectAll);
+// router.get("/admin",selectAll);
+router.post('/add', addEvent);
+router.put('/modif/:id', modifEvent);
+router.delete('/delete/:id', deleteEvent);
+
 
 module.exports = router;
