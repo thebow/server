@@ -20,6 +20,10 @@ CREATE TABLE events (
   date varchar(255) NOT NULL,
   image varchar(255) NOT NULL,
   type varchar(255) NOT NULL,
+<<<<<<< HEAD
+=======
+  selected boolean ,
+>>>>>>> f27e6d9f97347c28f8ce1fa4cf5dc2f70c294c21
   PRIMARY KEY (id)
 );
 -- from slim this table for the events selected by the user that will be added in the profile component
