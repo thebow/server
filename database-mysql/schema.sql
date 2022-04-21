@@ -20,7 +20,7 @@ CREATE TABLE events (
   date varchar(255) NOT NULL,
   image varchar(255) NOT NULL,
   type varchar(255) NOT NULL,
-  selected boolean NOT NULL,
+  selected boolean ,
   PRIMARY KEY (id)
 );
 
