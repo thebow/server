@@ -54,10 +54,12 @@ var signUp= (req,res)=>{
 
     //khairi: user/signIn
     var signIn=(req,res)=>{
+        console.log(req.body);
         const email=req.body.email
     const password=req.body.password
     const sqlSel=`SELECT * FROM users WHERE  email=? AND password=? `
     db.query(sqlSel,[email,password],(err,result)=>{
+        console.log(result);
         if(err){
             res.send(err)
         }
