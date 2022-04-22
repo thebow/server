@@ -32,7 +32,11 @@ var signUp= (req,res)=>{
     const role=req.body.role
     const sql=`SELECT * FROM users WHERE email=? `
     db.query(sql,email,(err,result)=>{
+<<<<<<< HEAD
         console.log(result);
+=======
+       //console.log(result);
+>>>>>>> 5adc8563a3aee8a45b7559e9a98aa534b6ffef1a
         if(err){
             res.send(err)
         }
