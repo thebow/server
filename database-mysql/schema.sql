@@ -29,8 +29,8 @@ CREATE TABLE events (
 CREATE TABLE  favorite(
   id_user int ,
   id_event int,
-  primary key (id_event),
-  primary key (id_user),
+  -- primary key (id_event),
+  -- primary key (id_user),
   FOREIGN KEY (id_user) REFERENCES users(id),
   FOREIGN KEY (id_event) REFERENCES events(id)
 );
