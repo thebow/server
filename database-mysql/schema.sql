@@ -20,6 +20,7 @@ CREATE TABLE events (
   date varchar(255) NOT NULL,
   image varchar(255) NOT NULL,
   type varchar(255) NOT NULL,
+  selected boolean ,
   PRIMARY KEY (id)
 );
 -- from slim this table for the events selected by the user that will be added in the profile component
@@ -32,7 +33,8 @@ CREATE TABLE  favorite(
   FOREIGN KEY (id_event) REFERENCES events(id)
 );
 
-
+-- ALTER TABLE events
+-- ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root -p < server/database-mysql/schema.sql
