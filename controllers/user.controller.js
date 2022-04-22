@@ -32,19 +32,20 @@ var signUp= (req,res)=>{
     const role=req.body.role
     const sql=`SELECT * FROM users WHERE email=? `
     db.query(sql,email,(err,result)=>{
-        console.log(result);
+       //console.log(result);
         if(err){
             res.send(err)
         }
         if(result.length>0){
             res.send("user already exist")
         }else{
-            db.query("INSERT INTO users (name,email,password,role) VALUES (?,?,?,?)",[name,email,password,role],(err,result)=>{
+            //`id`, `role`, `name`, `password`, `email`
+            db.query("INSERT INTO users ( role, name, password, email) VALUES (?,?,?,?)",[ role, name, password, email],(err,result)=>{
                 if(err){
                     res.send(err)
                 }
                 else{
-    res.send(['yes',result])
+                    res.send(['yes',result])
                 }
             })
         }
