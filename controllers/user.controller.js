@@ -29,8 +29,8 @@ var signUp= (req,res)=>{
     const email=req.body.email
     const password=req.body.password
     const role=req.body.role
-    const sql=`SELECT * FROM users WHERE email=${email} `
-    db.query(sql,(err,result)=>{
+    const sql=`SELECT * FROM users WHERE email=? `
+    db.query(sql,email,(err,result)=>{
         if(err){
             res.send(err)
         }
@@ -51,10 +51,12 @@ var signUp= (req,res)=>{
 
     //khairi: user/signIn
     var signIn=(req,res)=>{
+        console.log(req.body);
         const email=req.body.email
     const password=req.body.password
     const sqlSel=`SELECT * FROM users WHERE  email=? AND password=? `
     db.query(sqlSel,[email,password],(err,result)=>{
+        console.log(result);
         if(err){
             res.send(err)
         }
