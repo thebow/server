@@ -17,6 +17,32 @@ var selectAll = function (req, res) {
   });
 };
 
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+/**
+ * Ali : profile/selectOne
+ */
+
+
+ var selectOne = function (req, res) {
+    const email=req.params.email;
+
+    console.log("sent email", email);
+    db.query(`SELECT * FROM users WHERE email = ?`, email, (err,result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(201).json(result);
+      }
+    });
+  };
+
+
+
+
+
+
+
 
 // function remove one user
 
@@ -55,16 +81,16 @@ var signUp= (req,res)=>{
     //khairi: user/signIn
     var signIn=(req,res)=>{
         console.log(req.body);
-        const email=req.body.email
+    const email=req.body.email
     const password=req.body.password
     const sqlSel=`SELECT * FROM users WHERE  email=? AND password=? `
     db.query(sqlSel,[email,password],(err,result)=>{
-        console.log(result);
+       // console.log(result);
         if(err){
             res.send(err)
         }
         if(result.length>0){
-            res.send(["succesfully connected",result])
+            res.send(["succesfully connected", result])
         }else{
             res.send("Login faild")
         }
@@ -73,6 +99,7 @@ var signUp= (req,res)=>{
 
 module.exports = { 
 selectAll,
+selectOne,
 signUp,
 signIn
 };
