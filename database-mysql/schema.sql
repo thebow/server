@@ -8,7 +8,7 @@ CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
   role varchar(5) NOT NULL ,
   name varchar(50) NOT NULL,
-  password varchar(50) NOT NULL,
+  password varchar(255) NOT NULL,
   email varchar(50) NOT NULL,
   PRIMARY KEY (id)
 );
