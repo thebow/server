@@ -77,34 +77,38 @@ var signUp = async (req, res) => {
 
 //khairi: user/signIn
 var signIn = (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const sqlSel = `SELECT * FROM users WHERE email = ?`;
-  db.query(sqlSel, [email], (err, result) => {
-    if (err) {
-      res.send(err);
-    }
-    if (result) {
-      try {
-        console.log(result[0].password);
-        bcrypt.compare(password, result[0].password, function (err, rez) {
-          console.log(rez);
-          if (err) {
+    const email = req.body.email
+    const password = req.body.password
+    const sqlSel = `SELECT * FROM users WHERE email = ?`
+    db.query(sqlSel, [email], (err, result) => {
+        if (err) {
+            res.send(err)
+        }
+        if (result) {
+        try {
+            bcrypt.compare(
+            password,
+            result[0].password,
+            function (err, rez) {
+            console.log(rez);
+            if (err) {
+              res.send(err);
+            }
+            if (rez === false) {
+              res.send("login failed");
+            }
+            if (rez === true) {
+              res.send(['yes', result]);
+            }
+            }
+            );
+        } catch (err) {
             res.send(err);
-          } else if (rez === false) {
-            res.send("login failed");
-          } else {
-            res.send(["yes", result]);
-            //console.log("yes")
-          }
-        });
-      } catch (err) {
+        }
+        } else {
         res.send(err);
-      }
-    } else {
-      res.send(err);
-    }
-  });
+        } 
+    });
 };
 
 module.exports = {
@@ -114,4 +118,3 @@ module.exports = {
   signIn,
 };
 
-//hello Youssef
