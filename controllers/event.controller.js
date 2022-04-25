@@ -27,6 +27,7 @@ select((err, results) => {
 })
 },
   addEvent: function (req, res) {
+      console.log(req.body);
     add(req.body, (err, results) => {
         if (err) {
             res.status(500).send(err);
@@ -48,7 +49,7 @@ modifEvent: function (req, res) {
         }
     })
 },
-deleteEvent: function (req, res) {
+deleteEvent: function (req, res) {   
     let id = req.params.id;
     deleteOne(id, (err, results) => {
         if (err) {
