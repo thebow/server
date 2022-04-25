@@ -43,8 +43,15 @@ INSERT INTO `users` (`id`, `role`, `name`, `password`, `email`) VALUES
 (3, 'admin', 'Ali Ben', '123', 'admin@gmail.com'),
 (4, 'user', 'aaa', '123', 'user3@gmail.com'),
 (5, 'user', 'Kais', '123', 'kais@gmail.com'),
-(7, 'user', 'Mahjoub', '123', 'user4@gmail.com');
+(6, 'user', 'Mahjoub', '123', 'user4@gmail.com');
 
+INSERT INTO events (id,title,description,date,image,type) VALUES
+(1,)
+(2,)
+(3,)
+(4,)
+(5,)
+(6,)
 /*  Execute this file from the command line by typing:
  *    mysql -u root -p < server/database-mysql/schema.sql
  *  to create the database and the tables.*/
