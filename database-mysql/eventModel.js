@@ -3,6 +3,19 @@ const conn = require('./index.js');
 
 
 module.exports = {
+    getOne: function (id,callback) {
+        const sql="SELECT * FROM events where id=?";
+        conn.query(sql, id,function (err,result){
+            callback(err,result)
+        });
+      }, 
+    
+    select: function (callback) {
+        const sql="SELECT * FROM events";
+        conn.query(sql, function (err,result){
+            callback(err,result)
+        });
+      },
 
     add: function (event, callback) {
         const sql = "INSERT INTO events SET ?";
