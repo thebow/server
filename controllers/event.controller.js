@@ -1,10 +1,22 @@
 var db = require("../database-mysql");
-const { select,add, modifOne, deleteOne } = require("../database-mysql/eventModel.js");
+const { getOne, select, add, modifOne, deleteOne } = require("../database-mysql/eventModel.js");
 
 
 
   
-module.exports = { selectAll:function(req,res){
+module.exports = { 
+  selectOne: function(req, res, ) {
+    getOne(req.params.id,(err, results) => {
+      if (err) {
+          res.status(500).send(err);
+      }
+      else {
+          res.status(201).json(results);
+      }
+    })
+    },
+
+  selectAll:function(req,res){
 select((err, results) => {
   if (err) {
       res.status(500).send(err);
