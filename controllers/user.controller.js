@@ -96,6 +96,7 @@ var signIn = (req, res) => {
                     password,
                     result[0].password,
                     function (err, rez) {
+                        console.log(rez);
                         if (err) {
                             res.send(err);
                         }
