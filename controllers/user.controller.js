@@ -18,6 +18,32 @@ var selectAll = function (req, res) {
     });
 };
 
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+/**
+ * Ali : profile/selectOne
+ */
+
+
+ var selectOne = function (req, res) {
+    const email=req.params.email;
+
+    console.log("sent email", email);
+    db.query(`SELECT * FROM users WHERE email = ?`, email, (err,result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(201).json(result);
+      }
+    });
+  };
+
+
+
+
+
+
+
 
 // function remove one user
 
@@ -61,7 +87,6 @@ var signIn = (req, res) => {
     const password = req.body.password
     const sqlSel = `SELECT * FROM users WHERE email = ?`
     db.query(sqlSel, [email], (err, result) => {
-
         if (err) {
             res.send(err)
         }
@@ -87,6 +112,7 @@ var signIn = (req, res) => {
             }
         } else {
             res.send(err);
+
         }
     })
 }
@@ -94,10 +120,12 @@ var signIn = (req, res) => {
 
 
 
-module.exports = {
-    selectAll,
-    signUp,
-    signIn
+
+module.exports = { 
+selectAll,
+selectOne,
+signUp,
+signIn
 };
 
 
