@@ -1,10 +1,13 @@
 var mysql = require('mysql2');
+var myPassword = require('./env');
+
+
 
 
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'passe1999',
+  password :  myPassword.myPassword, // go to the env.js file and update your password
   database : 'eventogo'
 });
 

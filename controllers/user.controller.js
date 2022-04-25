@@ -59,7 +59,7 @@ var signUp = async (req, res) => {
 var signIn = (req, res) => {
     const email = req.body.email
     const password = req.body.password
-    const sqlSel = `SELECT password FROM users WHERE email = ?`
+    const sqlSel = `SELECT * FROM users WHERE email = ?`
     db.query(sqlSel, [email], (err, result) => {
 
         if (err) {
@@ -70,15 +70,15 @@ var signIn = (req, res) => {
                 bcrypt.compare(
                     password,
                     result[0].password,
-                    function (err, result) {
+                    function (err, rez) {
                         if (err) {
                             res.send(err);
                         }
-                        if (result === false) {
+                        if (rez === false) {
                             res.send("login failed");
                         }
-                        if (result === true) {
-                            res.send("signed in successfully");
+                        if (rez === true) {
+                            res.send(['yes', result]);
                         }
                     }
                 );
@@ -99,3 +99,6 @@ module.exports = {
     signUp,
     signIn
 };
+
+
+//hello Youssef
