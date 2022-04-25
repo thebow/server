@@ -11,6 +11,7 @@ CREATE TABLE users (
   password varchar(255) NOT NULL,
   email varchar(50) NOT NULL,
   PRIMARY KEY (id)
+
 );
 
 CREATE TABLE events (
@@ -21,7 +22,9 @@ CREATE TABLE events (
   image varchar(255) NOT NULL,
   type varchar(255) NOT NULL,
   selected boolean ,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  user_id int,
+  FOREIGN KEY (user_id) REFERENCES users (id)
 );
 -- from slim this table for the events selected by the user that will be added in the profile component
 -- CREATE TABLE  favorite(

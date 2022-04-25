@@ -55,7 +55,7 @@ var signUp = async (req, res) => {
     console.log(req.body);
     const name = req.body.name
     const email = req.body.email
-    // const password=req.body.password
+    //const password=req.body.password
     const role = req.body.role
     const sql = `SELECT * FROM users WHERE email=? `
     db.query(sql,[email], async (err, result) => {
@@ -83,39 +83,53 @@ var signUp = async (req, res) => {
 
 //khairi: user/signIn
 var signIn = (req, res) => {
-    const email = req.body.email
-    const password = req.body.password
-    const sqlSel = `SELECT * FROM users WHERE email = ?`
-    db.query(sqlSel, [email], (err, result) => {
-        if (err) {
-            res.send(err)
-        }
-        if (result) {
-            try {
-                bcrypt.compare(
-                    password,
-                    result[0].password,
-                    function (err, rez) {
-                        if (err) {
-                            res.send(err);
-                        }
-                        if (rez === false) {
-                            res.send("login failed");
-                        }
-                        if (rez === true) {
-                            res.send(['yes', result]);
-                        }
-                    }
-                );
-            } catch (err) {
-                res.send(err);
-            }
-        } else {
-            res.send(err);
-
-        }
-    })
+  const email = req.body.email
+  const password = req.body.password
+  const sqlSel = `SELECT * FROM users WHERE email = ?`
+  db.query(sqlSel, [email], (err, result) => {
+      if (err) {
+          res.send(err)
+      }
+      if (result) {
+          try {
+              bcrypt.compare(
+                  password,
+                  result[0].password,
+                  function (err, rez) {
+                      if (err) {
+                          res.send(err);
+                      }
+                      if (rez === false) {
+                          res.send("login failed");
+                      }
+                      if (rez === true) {
+                          //res.send(['yes', result]);
+                          console.log("yes")
+                      }
+                  }
+              );
+          } catch (err) {
+              res.send(err);
+          }
+      } else {
+          res.send(err);
+      }
+  })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
