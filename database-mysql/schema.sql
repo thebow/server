@@ -38,14 +38,9 @@ CREATE TABLE  favorite(
 --
 -- Déchargement des données de la table `users`
 --
+INSERT INTO `users` (`id`,`role`,`name`,`password`,`email`) VALUES
+(1,"admin","admin","$10$XzrguQM4RE3P6TOVkyNH9uY1/9w6lQT7X/A07VpyOYbcR2z3UGFm6","admin@gmail.com");
 
-INSERT INTO `users` (`id`, `role`, `name`, `password`, `email`) VALUES
-(1, 'user', 'Khayre', '123', 'user@gmail.com'),
-(2, 'user', 'nameKhayre', '123', 'user2@gmail.com'),
-(3, 'admin', 'Ali Ben', '123', 'admin@gmail.com'),
-(4, 'user', 'aaa', '123', 'user3@gmail.com'),
-(5, 'user', 'Kais', '123', 'kais@gmail.com'),
-(6, 'user', 'Mahjoub', '123', 'user4@gmail.com');
 
 INSERT INTO `events` (`id`,`title`,`description`,`date`,`image`,`type`) VALUES
 (1,"Beach Night Party, Bizert", "So much fun on bizert beach party, music and dance , be on Time!", "22/07/2022 20:00","https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/73/2020/02/04051939/SO-Sofitel-Hua-Hin-SO-Beach-Party-05-1-585x390.jpg","entertainment"),
