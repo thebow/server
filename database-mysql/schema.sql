@@ -27,14 +27,13 @@ CREATE TABLE events (
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
 -- from slim this table for the events selected by the user that will be added in the profile component
--- CREATE TABLE  favorite(
---   id_user int ,
---   id_event int,
---   primary key (id_event),
---   primary key (id_user),
---   FOREIGN KEY (id_user) REFERENCES users(id),
---   FOREIGN KEY (id_event) REFERENCES events(id)
--- );
+CREATE TABLE  favorite(
+  id_user int ,
+  id_event int,
+  
+  FOREIGN KEY (id_user) REFERENCES users(id),
+  FOREIGN KEY (id_event) REFERENCES events(id)
+);
 
 --
 -- Déchargement des données de la table `users`

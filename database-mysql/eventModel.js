@@ -9,6 +9,12 @@ module.exports = {
             callback(err,result)
         });
       }, 
+      selectManyById: function ( id, callback) {
+        const sql = "SELECT * FROM events t1 INNER JOIN users t2 ON t1.user_id = t2.id and t2.id =?;";
+        conn.query(sql, [id], function (error, results) {
+            callback(error, results);
+        });
+    },
     
     select: function (callback) {
         const sql="SELECT * FROM events";

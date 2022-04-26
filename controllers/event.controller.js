@@ -15,6 +15,16 @@ module.exports = {
       }
     })
     },
+    selectAllById:function(req,res){
+        selectManyById(req.params.id,(err, results) => {
+            if (err) {
+             res.status(500).send(err);
+            }
+            else {
+             res.status(201).json(results);
+            }
+        })
+    },
 
 selectAll:function(req,res){
     select((err, results) => {
