@@ -24,26 +24,20 @@ CREATE TABLE events (
   PRIMARY KEY (id)
 );
 -- from slim this table for the events selected by the user that will be added in the profile component
--- CREATE TABLE  favorite(
---   id_user int ,
---   id_event int,
---   primary key (id_event),
---   primary key (id_user),
---   FOREIGN KEY (id_user) REFERENCES users(id),
---   FOREIGN KEY (id_event) REFERENCES events(id)
--- );
+CREATE TABLE  favorite(
+  id_user int ,
+  id_event int,
+  
+  FOREIGN KEY (id_user) REFERENCES users(id),
+  FOREIGN KEY (id_event) REFERENCES events(id)
+);
 
 --
 -- Déchargement des données de la table `users`
 --
+INSERT INTO `users` (`id`,`role`,`name`,`password`,`email`) VALUES
+(1,"admin","admin","$10$XzrguQM4RE3P6TOVkyNH9uY1/9w6lQT7X/A07VpyOYbcR2z3UGFm6","admin@gmail.com");
 
-INSERT INTO `users` (`id`, `role`, `name`, `password`, `email`) VALUES
-(1, 'user', 'Khayre', '123', 'user@gmail.com'),
-(2, 'user', 'nameKhayre', '123', 'user2@gmail.com'),
-(3, 'admin', 'Ali Ben', '123', 'admin@gmail.com'),
-(4, 'user', 'aaa', '123', 'user3@gmail.com'),
-(5, 'user', 'Kais', '123', 'kais@gmail.com'),
-(6, 'user', 'Mahjoub', '123', 'user4@gmail.com');
 
 INSERT INTO `events` (`id`,`title`,`description`,`date`,`image`,`type`) VALUES
 (1,"Beach Night Party, Bizert", "So much fun on bizert beach party, music and dance , be on Time!", "22/07/2022 20:00","https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/73/2020/02/04051939/SO-Sofitel-Hua-Hin-SO-Beach-Party-05-1-585x390.jpg","entertainment"),
