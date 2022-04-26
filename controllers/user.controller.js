@@ -46,7 +46,7 @@ var signUp = async (req, res) => {
   console.log(req.body);
   const name = req.body.name;
   const email = req.body.email;
-  //const password=req.body.password
+  const password=req.body.password
   const role = req.body.role;
   const sql = `SELECT * FROM users WHERE email=? `;
   db.query(sql, [email], async (err, result) => {
@@ -57,12 +57,13 @@ var signUp = async (req, res) => {
     if (result.length > 0) {
       res.send("user already exist");
     } else {
-      const salt = await bcrypt.genSalt();
-      const hashedPassword = await bcrypt.hash(req.body.password, salt);
+     // const salt = await bcrypt.genSalt();
+     // const hashedPassword = await bcrypt.hash(req.body.password, salt);
       //`id`, `role`, `name`, `password`, `email`
       db.query(
         "INSERT INTO users ( role, name, password, email) VALUES (?,?,?,?)",
-        [role, name, hashedPassword, email],
+       // [role, name, hashedPassword, email],
+        [role, name, password, email],
         (err, result) => {
           if (err) {
             res.send(err);
@@ -86,22 +87,30 @@ var signIn = (req, res) => {
         }
         if (result) {
         try {
-            bcrypt.compare(
-            password,
-            result[0].password,
-            function (err, rez) {
-            console.log(rez);
-            if (err) {
-              res.send(err);
-            }
-            if (rez === false) {
+          
+            if (result === false) {
               res.send("login failed");
             }
-            if (rez === true) {
-              res.send(['yes', result]);
-            }
-            }
-            );
+          
+            res.send(['yes', result]);
+            
+
+            // bcrypt.compare(
+            // password,
+            // result[0].password,
+            // function (err, rez) {
+            // console.log(rez);
+            // if (err) {
+            //   res.send(err);
+            // }
+            // if (rez === false) {
+            //   res.send("login failed");
+            // }
+            // if (rez === true) {
+            //   res.send(['yes', result]);
+            // }
+            // }
+            // );
         } catch (err) {
             res.send(err);
         }
